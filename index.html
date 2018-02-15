@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>Timer</title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+  $(function(){
+    /////////////////////////////////////////////////////////////////////
+    // ここを編集 ///////////////////////////////////////////////////////
+    var title1 = "title1";
+    var endtime1 = "2018-04-01 12:00:00";
+    var title2 = "title2";
+    var endtime2 = "2018-04-01 12:00:00";
+    // ここまで /////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////
+
+    $('#title1').text(title1);
+    $('#title2').text(title2);
+    $('#end1').text(endtime1);
+    $('#end2').text(endtime2);
+
+    setInterval(function(){
+      var startDateTime = new Date();
+      var endDateTime = new Date(endtime1);
+      var left = endDateTime - startDateTime;
+
+      var d = Math.floor(left / 1000 / 60 / 60 / 24);
+      var h = Math.floor(left / 1000 / 60 / 60) % 24;
+      var mi = Math.floor(left/ 1000 / 60) % 60;
+      var s = Math.floor(left / 1000 % 60);
+      $('#time1').text(("00" + d).slice(-2) + 'days ' + ("00" + h).slice(-2) + ':' + ("00" + mi).slice(-2) + ':' + ("00" + s).slice(-2));
+    }, 1000);
+    setInterval(function(){
+      var startDateTime = new Date();
+      var endDateTime = new Date(endtime2);
+      var left = endDateTime - startDateTime;
+
+      var d = Math.floor(left / 1000 / 60 / 60 / 24);
+      var h = Math.floor(left / 1000 / 60 / 60) % 24;
+      var mi = Math.floor(left/ 1000 / 60) % 60;
+      var s = Math.floor(left / 1000 % 60);
+      $('#time2').text(("00" + d).slice(-2) + 'days ' + ("00" + h).slice(-2) + ':' + ("00" + mi).slice(-2) + ':' + ("00" + s).slice(-2));
+    }, 1000);
+  });
+  </script>
+  <style type="text/css">
+    body {
+      background: black;
+      color: red;
+    }
+    .title {
+      height: 10vh;
+      text-align: center;
+      font-size: 6em;
+    }
+    .end {
+      height: 2vh;
+      text-align: center;
+      font-size: 3em;
+    }
+    #box{
+      height: 35vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #time1 {
+      text-align: center;
+      font-size: 12em;
+    }
+    #time2 {
+      text-align: center;
+      font-size: 12em;
+    }
+  </style>
+  <div class="form">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div id="title1" class="title">
+          </div>
+          <div id="end1" class="end">
+          </div>
+          <div id="box">
+            <span id="time1">00days 00:00:00</span>
+          </div>
+          <div id="title2" class="title">
+          </div>
+          <div id="end2" class="end">
+          </div>
+          <div id="box">
+            <span id="time2">00days 00:00:00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
